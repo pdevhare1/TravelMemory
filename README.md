@@ -186,10 +186,31 @@ echo "✅ TravelMemory frontend is deployed at: http://example.com"
 ## 🧱 Deployment Architecture Diagram
 
 <p align="center">
-  <img src="diagram_travelmemory_resized.png" alt="TravelMemory AWS Architecture" width="800">
+  <img src="travelmemory-diagram.svg" alt="TravelMemory AWS Architecture" width="800">
 </p>
 
 ---
+
+## 🔐 AWS Security Group Configuration
+
+This section outlines the security group used for the TravelMemory application deployment.
+
+### Security Group Inbound Rules
+
+| Type       | Protocol | Port Range | Source    | Description               |
+| ---------- | -------- | ---------- | --------- | ------------------------- |
+| HTTP       | TCP      | 80         | 0.0.0.0/0 | Allow web traffic         |
+| HTTPS      | TCP      | 443        | 0.0.0.0/0 | Allow secure web traffic  |
+| Custom TCP | TCP      | 3000       | 0.0.0.0/0 | Backend API communication |
+| SSH        | TCP      | 22         | Your IP   | Admin access              |
+
+### Security Group Outbound Rules
+
+| Type        | Protocol | Port Range | Destination | Description                |
+| ----------- | -------- | ---------- | ----------- | -------------------------- |
+| All traffic | All      | All        | 0.0.0.0/0   | Allow all outbound traffic |
+
+> 💡 **Note**: In production, restrict SSH (port 22) to specific IPs only.
 
 ---
 
